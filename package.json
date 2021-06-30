@@ -1,0 +1,17 @@
+{
+  "name": "node-sequalize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "spandan joshi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.4",
+    "sqlite3": "^5.0.2"
+  }
+}
