@@ -3,11 +3,11 @@
 <p align="center">
 <img src="https://miro.medium.com/max/1400/1*SEfonxxMIktyFJWwA_oTTg.png" alt="learning Node sequalize" >
 </p>
-<a href="https://sequelize.org/master/" >Sequelize Website: https://sequelize.org/master/</a>
+<a href="https://sequelize.org/master/" >Sequelize Doc's: https://sequelize.org/master/</a>
 
 ------------------------------
 
-#### Node Sequelize Topics
+### Node Sequelize Topics
 * Setup Node.js,sequelize,express & mysql
 * Model instances & insert data
 * CRUD operation
