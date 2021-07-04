@@ -29,7 +29,12 @@ const Users = sequelize.define('users', {
 },{
    // tableName:"User",
    //engine:"engine name"
-    timestamps:true
+    timestamps:true,
+    hooks:{
+      beforeValidate:(user,options) =>{
+        console.log("Hooks called")
+      }
+    }
 })
 
 module.exports = {

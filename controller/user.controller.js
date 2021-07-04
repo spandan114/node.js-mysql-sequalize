@@ -352,3 +352,48 @@ exports.ManytoMany = async (req, res) => {
     });
   }
 }
+
+//Lazy loading & eager loading query
+exports.LazyLoading = async (req, res) => {
+  try {
+
+    const userData = await Users.findOne({where:{id:1}})
+    //lazy loading
+    const lazy = await userData.getPosts();
+    
+    return res.status(200).send({
+      statusCode: 200,
+      lazy
+    });
+ 
+  } catch (error) {
+    return res.status(500).send({
+      statusCode: 500,
+      message: error.message,
+    });
+  }
+}
+
+//Hooks
+//before insert, after insert etc ...
+exports.Hooks = async (req, res) => {
+  try {
+
+        const newUser = await Users.create({
+        firstName:"ab",
+        lastName:"cd",
+        email:"abcd@gmail.com",
+        gender:"MALE"
+    })
+
+    return res.status(200).send({
+      statusCode: 200,
+    });
+ 
+  } catch (error) {
+    return res.status(500).send({
+      statusCode: 500,
+      message: error.message,
+    });
+  }
+}

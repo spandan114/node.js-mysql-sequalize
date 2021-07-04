@@ -15,5 +15,7 @@ router.route('/one-to-one').get(users.OnetoOne)
 router.route('/belong-to').get(users.BelongTo)
 router.route('/one-to-many').get(users.OnetoMany)
 router.route('/many-to-many').get(users.ManytoMany)
+router.route('/lazy-loading').get(users.LazyLoading)
+router.route('/hooks').get(users.Hooks)
 
 module.exports = router;
