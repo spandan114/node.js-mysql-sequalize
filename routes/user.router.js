@@ -7,4 +7,13 @@ router.route('/user')
 .put(users.updateUser)
 .delete(users.deleteUser)
 
+router.route('/add-post').get(users.addPost)
+
+router.route('/raw-query').get(users.rawQuery)
+
+router.route('/one-to-one').get(users.OnetoOne)
+router.route('/belong-to').get(users.BelongTo)
+router.route('/one-to-many').get(users.OnetoMany)
+router.route('/many-to-many').get(users.ManytoMany)
+
 module.exports = router;

@@ -1,5 +1,7 @@
 const { Sequelize } = require("sequelize");
 const { sequelize } = require("./dbconnection");
+const { Posts } = require("./post");
+const { Users } = require("./users");
 
 sequelize
   .authenticate()
@@ -23,5 +25,6 @@ db.sequelize.sync().then(() => {
   console.log("Successfully sync");
 });
 
-//connect schema with db
-db.users = require("./users");
+//relation
+Users.hasOne(Posts,{foreignKey:'user_id'})
+Posts.belongsTo(Users,{foreignKey:'user_id'})

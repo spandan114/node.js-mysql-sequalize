@@ -13,10 +13,18 @@ const Users = sequelize.define('users', {
   },
   email:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+      unique:true
   },
   gender:{
-      type:DataTypes.STRING
+      type:DataTypes.STRING,
+      validate:{
+        //equals:"MALE"
+        isIn:{
+          args:[["MALE","FEMALE"]],
+          msg:"please enter only MALE or FEMALE"
+        }
+      }
   }
 },{
    // tableName:"User",
