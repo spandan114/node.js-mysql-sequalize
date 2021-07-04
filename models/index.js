@@ -1,6 +1,7 @@
 const { Sequelize } = require("sequelize");
 const { sequelize } = require("./dbconnection");
 const { Posts } = require("./post");
+const { Tags } = require("./tags");
 const { Users } = require("./users");
 
 sequelize
@@ -25,6 +26,20 @@ db.sequelize.sync().then(() => {
   console.log("Successfully sync");
 });
 
+db.users = require('./users')
+db.posts = require('./post')
+db.tags = require('./tags')
+db.post_tag = require('./post_tag')
 //relation
-Users.hasOne(Posts,{foreignKey:'user_id'})
+//one to one - one user can add one post
+// Users.hasOne(Posts,{foreignKey:'user_id'})
+// Posts.belongsTo(Users,{foreignKey:'user_id'})
+
+//one to many - one user can add many post
+
+Users.hasMany(Posts,{foreignKey:'user_id'})
 Posts.belongsTo(Users,{foreignKey:'user_id'})
+
+//many to many - multiple tags can available in multiple post
+Posts.belongsToMany(Tags,{through:"post_tag"})
+Tags.belongsToMany(Posts,{through:"post_tag"})

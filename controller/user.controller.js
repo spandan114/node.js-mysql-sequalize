@@ -1,7 +1,8 @@
 var {Users} = require('../models/users')
 var {Posts} = require('../models/post')
 const { Sequelize,QueryTypes,Op } = require("sequelize");
-const {sequelize} = require('../models/dbconnection')
+const {sequelize} = require('../models/dbconnection');
+const { Tags } = require('../models/tags');
 
 exports.addUser = async (req, res) => {
   try {
@@ -306,8 +307,18 @@ exports.BelongTo = async (req, res) => {
 exports.OnetoMany = async (req, res) => {
   try {
 
+    const userData = await Users.findAll({
+      attributes:['firstName','email'],
+      include:{
+        model:Posts,
+        attributes:['title']
+      },
+      where:{id:1}
+    })
+
     return res.status(200).send({
       statusCode: 200,
+      userData
     });
  
   } catch (error) {
@@ -322,8 +333,16 @@ exports.OnetoMany = async (req, res) => {
 exports.ManytoMany = async (req, res) => {
   try {
 
+    const postData = await Posts.findAll({
+      include:{
+        model:Tags
+      },
+      where:{id:1}
+    })
+    
     return res.status(200).send({
       statusCode: 200,
+      postData
     });
  
   } catch (error) {
